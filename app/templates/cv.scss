@@ -1,0 +1,222 @@
+$section-title-line-color: #bbb;
+
+$font-xs: 10px;
+$font-s: 10px;
+$font-m: 14px;
+$font-l: 16px;
+$font-xl: 26px;
+
+
+$space-xs: 4px;
+$space-s: 6px;
+$space-m: 10px;
+$space-l: 16px;
+$space-xl: 26px;
+
+$gutter: 0px;
+$margin-top: 0px;
+$margin-bottom: 0px;
+
+@page {
+  size: Letter;
+  margin: 1cm;
+}
+
+body {
+	font-family: Arial, sans-serif;
+}
+
+h1, h2, p {
+	margin-top: 0;
+	margin-bottom: 0;;
+}
+h1 { font-size: $font-xl; }
+h2 { font-size: $font-l; }
+p { font-size: $font-m; }
+ul { 
+	font-size: $font-m;
+	// padding-inline-start: 0;
+	padding-left: 0;
+ }
+
+.header {
+	display: grid;
+	grid-template-columns: repeat(14, 1fr);
+	gap: $space-m;
+	// background: #49ce6c;
+
+	.header__contact-info {
+		grid-column: span 12;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: $space-m;
+	}
+
+	.header__contact-lines {
+		p {
+			font-size: $font-s;
+		}
+	}
+
+	.header__profile-image-container {
+		grid-column: span 2;
+		// position: relative;
+		// width: 100%;
+		// padding-top: 100%; // creates a square by making height = width
+
+		.header__profile-image {
+			// position: absolute;
+			top: 0; left: 0;
+			width: 100%;
+			object-fit: cover;
+			border-radius: 50%;
+		}
+	}
+}
+
+.section {
+	margin-bottom: $space-xl;
+
+	.section-title-lined-wrapper {
+		display: table;
+		width: 100%;
+
+		.section-title-lined {
+			display: table-cell;
+			font-size: $font-l;
+			font-weight: bold;
+			white-space: nowrap;
+			padding-right: $space-s;
+
+			.section-title-lined-line {
+				display: table-cell;
+				border-bottom: 2px solid black;
+				width: 100%;
+			}
+		}
+	}
+}
+
+
+// .profile { background: #fce3e3; }
+
+.skills {
+
+	.skills__list{
+		// background: #e3fce3; 
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		gap: $space-xs;
+
+		li {
+			grid-column: span 6; // example: each skill takes 3 columns in a 12-column grid
+			list-style: none;
+		}
+	}
+	
+}
+
+%year-details-list {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	align-items: start;
+	gap: $space-s;
+	// padding-bottom: $space-m;
+	// list-style: none;
+	// padding: 0;
+	// margin: 0;
+}
+
+%year-details-year {
+  grid-column: 1 / span 2;
+  font-weight: bold;
+}
+
+%year-details-details {
+  grid-column: 3 / span 10;
+}
+
+// Use in education and experience
+.education {
+  .education__list li {
+	@extend %year-details-list; 
+	padding-bottom: $space-m;
+
+}
+  .education__year { @extend %year-details-year; }
+  .education__details { @extend %year-details-details; }
+}
+
+.experience {
+	break-inside: auto;
+	// page-break-inside: avoid;
+	// break-before: page;
+	// page-break-before: always;
+
+	.experience__list li { 
+		@extend %year-details-list; 
+		padding-bottom: $space-m;
+
+	}
+	
+	.experience__year { @extend %year-details-year; }
+	.experience__details { 
+		@extend %year-details-details; 
+		display: grid;
+		grid-template-columns: repeat(9, 1fr);
+		break-inside: auto;
+		break-before: auto;
+		
+		.experience__role {
+			break-before: auto;
+			grid-column: 1 / span 9;
+			font-weight: bold;
+			margin-bottom: $space-xs;
+		}
+
+		.experience__responsibilities {
+			break-before: auto;
+			grid-column: 1 / span 9;
+			ul {
+				break-before: auto;
+				break-inside: auto;
+				list-style: disc inside;
+				// margin-left: $space-m;
+				// padding-left: 0;
+			}
+			li {
+				break-before: auto;
+				grid-column: 1 / span 9;
+				display: list-item;
+				padding-bottom: $space-xs;
+
+			}
+		}
+  }
+}
+
+.languages {
+
+	.languages__list {
+		// background: #e3fce3; 
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		gap: $space-xs;
+		// justify-items: center;
+
+		li {
+			grid-column: span 3; 
+			list-style: none;
+			border-right: 1px solid black;
+			text-align: center;
+			width: 100%;
+			// align-items: center;
+			// background: red;
+		}
+
+		li:last-child {
+			border-right: none;
+		}
+	}
+}

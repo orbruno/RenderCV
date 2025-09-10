@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ name }} - CV<</title>
+    <!-- Remove or comment out this line, since you are passing the CSS directly in Python -->
+    <!-- <link rel="stylesheet" href="cv.css" /> -->
+  </head>
+  <body>
+    <div class="section header">
+      <div class="header__contact-info">
+        <div class="header__titles">
+          <h1>{{ name }}</h1>
+          {% if titles %}
+          <h2>{{ titles | join(' | ') }}</h2>
+          {% endif %}
+        </div>
+        <div class="header__contact-lines">
+          <p>
+            <span>
+              {% if contact_info.location %} {{ contact_info.location }} | {% endif %}
+              {% if contact_info.phone %} {{ contact_info.phone }} | {% endif %}
+              {% if contact_info.email %} {{ contact_info.email }} | {% endif %}
+              {% if contact_info.website_link %} <a href="{{ contact_info.website_link }}">{{ contact_info.website_link | base_url }}</a> | {% endif %}
+              {% if contact_info.github %} <a href="{{ contact_info.github }}">github</a> | {% endif %}
+              {% if contact_info.linkedin %} <a href="{{ contact_info.linkedin }}">linkedin</a> {% endif %}
+            </span>
+          </p>
+        </div>
+      </div>
+
+      <div class="header__profile-image-container">
+        <img
+          src="media/default-profile.jpeg"
+          alt="Profile picture"
+          class="header__profile-image"
+        />
+      </div>
+    </div>
+
+      <div class="section profile">
+        <div class="section-title-lined-wrapper">
+          <h2 class="section-title-lined">PROFESSIONAL PROFILE</h2>
+          <span class="section-title-lined-line"></span>
+        </div>
+
+      <p>
+        {% if profile %}
+          {{ profile }}
+        {% endif %}
+      </p>
+    </div>
+
+    <div class="section skills">
+      <div class="section-title-lined-wrapper">
+        <h2 class="section-title-lined">CORE SKILLS</h2>
+        <span class="section-title-lined-line"></span>
+      </div>
+      <div class="skills__list-container">
+        <ul class="skills__list">
+          {% for item in competencies_and_skills %}
+          <li>
+            <strong>{{ item.competency }}</strong>
+            (
+            {% for skill in item.skills %}
+              {{ skill }}
+              {% if not loop.last %}, {% endif %}
+            {% endfor %}
+            )
+            </li>
+          {% endfor %}
+        </ul>
+    </div>
+
+
+    
+    <div class="section education">
+      <div class="section-title-lined-wrapper">
+        <h2 class="section-title-lined">EDUCATION</h2>
+        <span class="section-title-lined-line"></span>
+      </div>
+      <div class="education__list-container">
+        <ul class="education__list">
+            {% for item in education %}
+            <li>
+              <span class="education__year">{{ item.year }}</span>
+              <span class="education__details">
+                <strong>{{ item.degree }}</strong><br />
+                {{ item.institution }}<br />
+              </span>
+            </li>
+            {% endfor %}  
+          </li>
+        </ul>
+    </div>
+
+    
+    <div class="section experience">
+      <div class="section-title-lined-wrapper">
+        <h2 class="section-title-lined">RELEVANT EXPERIENCE</h2>
+        <span class="section-title-lined-line"></span>
+      </div>
+      <div class="experience__list-container">
+        <ul class="experience__list">
+          {% for item in work_experience %}
+          <li>
+            <span class="experience__year">{{ item.years }}</span>
+            <div class="experience__details">
+              <div class="experience__role">
+                <strong>{{ item.position }}</strong><br />{{ item.company }}
+              </div>
+              <ul class="experience__responsibilities">
+                {% for role in item.roles %}
+                <li>
+                  {{ role }}
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+    </div>
+    </div>
+    <div class="section languages">
+        <div class="section-lang-lined-wrapper">
+          <h2 class="section-title-lined">LANGUAGES</h2>
+          <span class="section-title-lined-line"></span>
+        </div>
+
+      <ul class="languages__list">
+          {% for item in languages %}
+          <li>
+            <strong>{{ item.language }}:</strong>{{ item.level }}
+          </li>
+          {% endfor %}
+      </ul>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ name }} - CV</title>
+    <link rel="stylesheet" href="cv.css" />
+  </head>
+  <body>
+    <div class="section header">
+      <div class="header__container">
+        <div class="header__contact-info">
+          <h1>{{ name }}</h1>
+          {% if titles %}
+          <div class="titles">{{ titles | join(' | ') }}</div>
+          {% endif %}
+          <div class="contact-line">
+            {% if contact_info.location %}{{ contact_info.location }} | {% endif
+            %} {% if contact_info.phone %}{{ contact_info.phone }} | {% endif %}
+            {% if contact_info.email %}{{ contact_info.email }}{% endif %}
+          </div>
+          <div class="links-line">
+            {% set links = [] %} {% if contact_info.website_base %} {% set _ =
+            links.append('<a href="' ~ contact_info.website_link ~ '"
+              >' ~ contact_info.website_base ~ '</a
+            >') %} {% endif %} {% if contact_info.linkedin %} {% set _ =
+            links.append('<a href="' ~ contact_info.linkedin ~ '">LinkedIn</a>')
+            %} {% endif %} {% if contact_info.github %} {% set _ =
+            links.append('<a href="' ~ contact_info.github ~ '">GitHub</a>') %}
+            {% endif %} {{ links | join(' | ') | safe }}
+          </div>
+        </div>
+        <div class="header__image-container" style="width: 20%">
+          <img
+            src="../media/default-profile.jpeg"
+            alt="Profile picture"
+            class="profile__image"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="section profile">
+      <h2>Professional Profile</h2>
+      <p>Placeholder for professional profile summary</p>
+    </div>
+    <div class="section skills">
+      <h2>Core Skills</h2>
+      <p>Placeholder for core skills</p>
+    </div>
+    <div class="section education">
+      <h2>Education</h2>
+      <p>Placeholder for education</p>
+    </div>
+    <div class="section experience">
+      <h2>Relevant Experience</h2>
+      <p>Placeholder for relevant experience</p>
+    </div>
+  </body>
+</html>

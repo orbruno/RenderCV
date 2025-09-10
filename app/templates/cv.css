@@ -1,0 +1,156 @@
+@page {
+  size: Letter;
+  margin: 1cm;
+}
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1, h2, p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h1 {
+  font-size: 26px;
+}
+
+h2 {
+  font-size: 16px;
+}
+
+p {
+  font-size: 14px;
+}
+
+ul {
+  font-size: 14px;
+  padding-left: 0;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  gap: 10px;
+}
+.header .header__contact-info {
+  grid-column: span 12;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.header .header__contact-lines p {
+  font-size: 10px;
+}
+.header .header__profile-image-container {
+  grid-column: span 2;
+}
+.header .header__profile-image-container .header__profile-image {
+  top: 0;
+  left: 0;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.section {
+  margin-bottom: 26px;
+}
+.section .section-title-lined-wrapper {
+  display: table;
+  width: 100%;
+}
+.section .section-title-lined-wrapper .section-title-lined {
+  display: table-cell;
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap;
+  padding-right: 6px;
+}
+.section .section-title-lined-wrapper .section-title-lined .section-title-lined-line {
+  display: table-cell;
+  border-bottom: 2px solid black;
+  width: 100%;
+}
+
+.skills .skills__list {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 4px;
+}
+.skills .skills__list li {
+  grid-column: span 6;
+  list-style: none;
+}
+
+.experience .experience__list li, .education .education__list li {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: start;
+  gap: 6px;
+}
+
+.experience .experience__year, .education .education__year {
+  grid-column: 1/span 2;
+  font-weight: bold;
+}
+
+.experience .experience__details, .education .education__details {
+  grid-column: 3/span 10;
+}
+
+.education .education__list li {
+  padding-bottom: 10px;
+}
+.experience {
+  break-inside: auto;
+}
+.experience .experience__list li {
+  padding-bottom: 10px;
+}
+.experience .experience__details {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  break-inside: auto;
+  break-before: auto;
+}
+.experience .experience__details .experience__role {
+  break-before: auto;
+  grid-column: 1/span 9;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.experience .experience__details .experience__responsibilities {
+  break-before: auto;
+  grid-column: 1/span 9;
+}
+.experience .experience__details .experience__responsibilities ul {
+  break-before: auto;
+  break-inside: auto;
+  list-style: disc inside;
+}
+.experience .experience__details .experience__responsibilities li {
+  break-before: auto;
+  grid-column: 1/span 9;
+  display: list-item;
+  padding-bottom: 4px;
+}
+
+.languages .languages__list {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 4px;
+}
+.languages .languages__list li {
+  grid-column: span 3;
+  list-style: none;
+  border-right: 1px solid black;
+  text-align: center;
+  width: 100%;
+}
+.languages .languages__list li:last-child {
+  border-right: none;
+}
+
+/*# sourceMappingURL=cv.css.map */
